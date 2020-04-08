@@ -3,12 +3,6 @@ import classes from './Burger.css'
 import BurgerIngredients from './BurgerIngredients/BurgerIngredients'
 
 const burger = (props) => {
-    // const currentIngredients = Object.keys(props.ingredients)
-    //     .map(igKey => {
-    //         return [...Array(props.ingredients[igKey])].map((_, i) => {
-    //             return <BurgerIngredients key={igKey + i} type={igKey} />
-    //         });
-    //     })
 
     let currentIngredients = Object.keys(props.ingredients)
         .map(igKey => {
@@ -22,8 +16,8 @@ const burger = (props) => {
         },[]);
     
     if( currentIngredients.length === 0){
-        currentIngredients = <p>Please add INGREDIENTS!</p>
-    }
+        currentIngredients = <p>Please add INGREDIENTS!</p>;
+    };
     
 
     return (
@@ -32,7 +26,7 @@ const burger = (props) => {
             {currentIngredients}
             <BurgerIngredients type='bread-bottom' />
         </div>
-    )
+    );
 }
 
 export default burger;

@@ -7,7 +7,6 @@ const backdrop = (props) => (
 );
 
 backdrop.propTypes = {
-    disabled: PropTypes.bool.isRequired,
     close: PropTypes.func.isRequired
 }
 export default backdrop

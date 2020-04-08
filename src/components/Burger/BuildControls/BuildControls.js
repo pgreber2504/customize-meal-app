@@ -25,7 +25,7 @@ const buildControls = (props) => {
                 onClick={props.checkout}
                 disabled={!props.disabledCheckout}
                 className={classes.Checkout}>
-                    Checkout
+                    {props.isAuth ? 'Checkout' : 'Sign Up to order'}
             </button>
         </div>
     )
