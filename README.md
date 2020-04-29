@@ -1,7 +1,7 @@
 # Customize Meal Application
 
-This is Single Page Application created with React, JavaScript, CSS, HTML, Firebase and [Create React App](https://github.com/facebookincubator/create-react-app). 
-In future Application might be used in all of kind restaurants.
+This is Single Page Application created with React, JavaScript, CSS, HTML, Firebase and [Create React App](https://github.com/facebookincubator/create-react-app). <br>
+In future Application might be used in all of kind restaurants.<br>
 Please test this project and leave feedback ;)
 
 
@@ -26,9 +26,9 @@ You will also see any lint errors in the console.
 
 ## What's next ?
 
-In near future I plan to add few new functionallities like: 
-Add full responsive Home Page with all navigation.
-Expanding Orders for customer with details.
-Refactor all CSS modules. Probably using SASS.
-Create my own backend with Node.JS.
+In near future I plan to add few new functionallities like: <br>
+Add full responsive Home Page with all navigation.<br>
+Expanding Orders for customer with details.<br>
+Refactor all CSS modules. Probably using SASS.<br>
+Create my own backend with Node.JS.<br>
 And much more...
