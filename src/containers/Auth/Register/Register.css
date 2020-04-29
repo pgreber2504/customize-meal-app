@@ -1,4 +1,4 @@
-.Auth {
+.Register{
     margin: 20px auto;
     width: 80%;
     box-shadow: 0 2px 3px rgb(61, 64, 67);
@@ -9,21 +9,12 @@
     border-radius: 30px;
 }
 
-.Auth h1, span{
-    display: block;
+.Register h1 {
     text-align: center;
 }
 
-.Auth a {
-    color: inherit;
-}
-
-.Auth a:hover {
-    color: #40a4c8;
-}
-
 @media (min-width: 600px) {
-    .Auth {
+    .Register{
         width: 500px;
     }
 }

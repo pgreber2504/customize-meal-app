@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 
@@ -6,26 +6,26 @@ import Order from '../../components/Order/Order';
 import * as actionCreators from '../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
-class Orders extends Component {
+const orders = props => {
+    const {userId, token, fetchOrdersFromServer} = props;
 
-    componentDidMount() {
-        this.props.fetchOrdersFromServer(this.props.token, this.props.userId);
+    useEffect(() => {
+        fetchOrdersFromServer(token, userId);
+    }, [fetchOrdersFromServer, token, userId])
+
+    let orders = <Spinner />
+
+    if (!props.loading) {
+        orders = props.orders.map(orders => (
+            <Order
+                key={orders.id}
+                price={orders.price.toFixed(2)}
+                ingredients={orders.ingredients} />
+        ))
     }
 
-    render() {
-        let orders = <Spinner />
+    return orders;
 
-        if(!this.props.loading){
-            orders = this.props.orders.map(orders => (
-                <Order
-                    key={orders.id}
-                    price={orders.price.toFixed(2)}
-                    ingredients= {orders.ingredients} />
-            ))
-        }
-
-        return orders;
-    }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -45,5 +45,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Orders);
+export default connect(mapStateToProps, mapDispatchToProps)(orders);

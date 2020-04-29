@@ -2,6 +2,7 @@
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
+    margin: 10px auto;
 
 }
 
@@ -13,21 +14,35 @@
 
 .InputElement{
     outline: none;
-    border: 1px solid #ccc;
-    background-color: white;
+    border: 1px solid #212529;
+    background-color: #212529;
+    color: #6c757d;
     font: inherit;
     padding: 6px 10px;
     display: block;
     width: 100%;
     box-sizing: border-box;
+
+
 }
+
+.InputElement select option{
+    color: #6c757d
+}
+
 
 .InputElement:focus {
     outline: none;
-    background-color: #ccc;
+    border: 1px solid #40a4c8;
 }
 
 .Invalid{
-    background-color: rgb(247, 143, 131);
     border: 1px solid red;
+}
+
+.Message{
+    color: red;
+    font-size: 0.8rem;
+    text-align: justify;
+    position: absolute;
 }

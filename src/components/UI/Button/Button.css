@@ -1,21 +1,25 @@
 .Button{
-    background-color: transparent;
-    border: none;
+    background-color: rgb(19, 19, 19);
+    border: 1px solid black;
+    border-radius: 10px;
     color: white;
     outline: none;
+    margin: 3px auto;
     cursor: pointer;
     font: inherit;
     padding: 10px;
-    padding: 10px;
     font-weight: bold;
+    text-align: center;
+    display: block;
 }
 
-.Button:first-of-type{
-    margin-left: 0;
-    padding-left: 0;
+.Button:hover {
+    background-color: #40a4c8;
+    color: white;
 }
 
 .Button:disabled{
+    background-color: rgb(143, 141, 137);
     color: #ccc;
     cursor: not-allowed;
 }

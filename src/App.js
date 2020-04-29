@@ -1,62 +1,66 @@
-import React, { Component } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
+import Spinner from './components/UI/Spinner/Spinner'
 import Layout from './hoc/Layout/Layout';
 import Logout from './containers/Auth/Logout/Logout';
 import * as actionCreators from './store/actions/index';
-import asyncComp from './hoc/asyncComp/asyncComp';
 
-const ordersLazy = asyncComp(() => {
+
+const Orders = React.lazy(() => {
   return import('./containers/Orders/Orders')
 });
 
-const authLazy = asyncComp(() => {
+const Auth = React.lazy(() => {
   return import('./containers/Auth/Auth')
 });
 
-const checkoutLazy = asyncComp(() => {
+const Checkout = React.lazy(() => {
   return import('./containers/Checkout/Checkout')
 });
 
-class App extends Component {
-  componentDidMount() {
-    this.props.autoAuth();
-  }
+const Register = React.lazy(() => {
+  return import('./containers/Auth/Register/Register')
+})
 
+const App = props => {
+  
+  useEffect(() => {
+    props.autoAuth();
+  }, [])
 
-  render() {
-    let route = (
+  let route = (
+    <Switch>
+      <Route exact path='/' component={BurgerBuilder} />
+      <Route path='/auth' component={Auth} />
+      <Route path='/register' component= {Register} />
+      <Redirect to='/' />
+    </Switch>
+  )
+  if (props.isAuth) {
+    route = (
       <Switch>
         <Route exact path='/' component={BurgerBuilder} />
-        <Route path='/auth' component={authLazy} />
+        <Route path='/logout' component={Logout} />
+        <Route path='/auth' component={Auth} />
+        <Route path='/orders' component={Orders} />
+        <Route path='/checkout' component={Checkout} />
         <Redirect to='/' />
       </Switch>
     )
-    if (this.props.isAuth) {
-      route = (
-        <Switch>
-          <Route exact path='/' component={BurgerBuilder} />
-          <Route path='/logout' component={Logout} />
-          <Route path='/auth' component={authLazy} />
-          <Route path='/orders' component={ordersLazy} />
-          <Route path='/checkout' component={checkoutLazy} />
-          <Redirect to='/' />
-        </Switch>
-      )
-    }
-
-
-
-    return (
-      <BrowserRouter>
-        <Layout>
-          {route}
-        </Layout>
-      </BrowserRouter>
-    );
   }
+
+  return (
+    <BrowserRouter>
+      <Layout>
+        <Suspense fallback= {<Spinner/>}>
+          {route}
+        </Suspense>
+      </Layout>
+    </BrowserRouter>
+  );
 }
 
 const mapDispatchToProps = (dispatch) => {
