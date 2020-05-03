@@ -7,7 +7,7 @@ import Logo from '../../Logo/Logo';
 const toolbar = (props) => (
     <header className={classes.Toolbar}>
         <div onClick= {props.showSideDrawer} className= {[classes.Menu, classes.MobileOnly].join(' ')}>
-            <p>MENU</p>
+            <div className={classes.Burger}></div>
         </div>
         <div className={classes.Logo}>
             <Logo />

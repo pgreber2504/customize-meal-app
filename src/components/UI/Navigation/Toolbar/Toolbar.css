@@ -29,24 +29,55 @@
 
 @media(min-width: 500px){
     .MobileOnly{
-        display:none ;
+        display: none;
     }
 }
 
 .Menu{
-    background-color: white;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    /* background-color: white; */
     padding: 8px 13px;
-    height: 80%;
+    height: 44.8px;
+    width: 60px;
     box-sizing: border-box;
     border-radius: 8px;
-    text-align: center;
     font-size: 0.8em;
     cursor: pointer;
 
 }
 
-.Menu p{
-    margin: 6px 0 0 0;
+.Burger{
+    width: 34px;
+    height: 6px;
+    margin-top: 10px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px gray;
+    transition: all .5s ease-in-out;
+}
+
+.Burger::before,
+.Burger::after{
+    content: '';
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 5px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px gray;
+    transition: all .5s ease-in-out;
+}
+
+.Burger::before{
+    transform: translateY(-10px);
+}
+
+.Burger::after{
+    transform: translateY(10px);
 }
 
 .Menu:active{
